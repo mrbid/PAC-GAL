@@ -91,13 +91,13 @@ void resetGame(uint mode)
     
     gp[0] = (vec){0.f, -1.5f, 0.f};
     tgp[0] = gp[0];
-    gd[0] = 0;
+    gd[0] = 3;
     ga[0] = 1;
     gt[0] = 0.f;
     
     gp[1] = (vec){0.f, 1.5f, 0.f};
     tgp[1] = gp[1];
-    gd[1] = 2;
+    gd[1] = 3;
     ga[1] = 1;
     gt[1] = 0.f;
     
