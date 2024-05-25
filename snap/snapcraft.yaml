@@ -31,7 +31,7 @@ apps:
 
 parts:
   pacgal:
-    source: https://github.com/mrbid/pacgal
+    source: https://github.com/mrbid/PAC-GAL
     source-type: git
     plugin: make
     source-subdir: snap
