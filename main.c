@@ -518,9 +518,9 @@ void main_loop()
     {
         const float d = pb-t;
         const float s = 7.f-d;
-        if(d >= 1.f && d <= 2.f){mScale1(&model, d);}
-        else if(s <= 2.f)       {mScale1(&model, s);}
-        else if(d >= 2.f && d <= 5.f)       {mScale1(&model, 2.f);}
+        if(d >= 1.f && d <= 2.f)     {mScale1(&model, d);  }
+        else if(s <= 2.f)            {mScale1(&model, s);  }
+        else if(d >= 2.f && d <= 5.f){mScale1(&model, 2.f);}
     }
     mSetPos(&model, pp);
     if(pd == 1)     {mRotZ(&model, 90.f*DEG2RAD); }
