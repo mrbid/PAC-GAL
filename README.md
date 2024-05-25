@@ -1,4 +1,4 @@
-# Temple Driver
+# PAC-GAL
 
 [![Screenshot of the Pac-Gal game, a FOSS Pac-Man remake](https://raw.githubusercontent.com/mrbid/PAC-GAL/main/screenshot.png)](https://youtu.be/mHp8GOz5gJ8)
 
