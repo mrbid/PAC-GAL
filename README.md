@@ -2,6 +2,8 @@
 
 [![Screenshot of the Pac-Gal game, a FOSS Pac-Man remake](https://raw.githubusercontent.com/mrbid/PAC-GAL/main/screenshot.png)](https://youtu.be/mHp8GOz5gJ8)
 
+A turn-based PAC-MAN.
+
 - Flathub: https://flathub.org/apps/com.voxdsp.PacGal
 - Snapcraft: https://snapcraft.io/pacgal
 
