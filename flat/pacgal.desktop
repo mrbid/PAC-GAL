@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=PAC-GAL
+Comment=Feminized PAC-MAN remake
+StartupNotify=false
+Exec=pacgal
+Icon=pacgal
+Terminal=false
+Type=Application
+Categories=Game;ArcadeGame;KidsGame;Graphics

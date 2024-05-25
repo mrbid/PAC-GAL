@@ -751,10 +751,10 @@ void key_callback(GLFWwindow* window, int key, int scancode, int action, int mod
                 fc = 0;
             }
         }
-        else if(key == GLFW_KEY_R) // reset game
-        {
-            resetGame(0);
-        }
+        // else if(key == GLFW_KEY_R) // reset game
+        // {
+        //     resetGame(0);
+        // }
     }
     else if(action == GLFW_RELEASE)
     {
@@ -788,7 +788,7 @@ int main(int argc, char** argv)
     printf("James William Fletcher (github.com/mrbid)\n");
     printf("%s - You say it best when you say nothing at all.\n", appTitle);
     printf("----\n");
-    printf("A feminized PAC-MAN clone.\n");
+    printf("A feminized PAC-MAN remake.\n");
     printf("----\n");
     printf("One command line argument, msaa 0-16.\n");
     printf("e.g; ./pacgal 16\n");

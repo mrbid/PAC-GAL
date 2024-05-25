@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component type="desktop-application">
+	<id>com.voxdsp.PacGal</id>
+	<metadata_license>CC-BY-4.0</metadata_license>
+	<project_license>MIT</project_license>
+	<developer_name>James William Fletcher</developer_name>
+	<launchable type="desktop-id">com.voxdsp.TempleDriver.desktop</launchable>
+	<name>PAC-GAL</name>
+	<summary>Feminized PAC-MAN remake</summary>
+	<description>
+		<p>Turn based PAC-MAN, girl style!</p>
+		<ul>
+			<li>W,A,S,D / Arrow Keys = Move</li>
+		</ul>
+		<p>Dedicated to Tōru Iwatani.</p>
+	</description>
+	<screenshots>
+		<screenshot type="default">
+			<image>https://raw.githubusercontent.com/mrbid/PAC-GAL/main/screenshot.png</image>
+			<caption>Grabby Ghosts!</caption>
+		</screenshot>
+	</screenshots>
+	<url type="homepage">https://github.com/mrbid/PacGal</url>
+	<releases>
+		<release version="1.0" date="2024-05-25" />
+	</releases>
+	<content_rating type="oars-1.0" />
+</component>
