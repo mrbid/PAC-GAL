@@ -15,4 +15,4 @@ You don't need [UPX](https://upx.github.io/) but if you don't have the package y
 
 # attribution
 - All assets apart from the level where generated using [LUMA GENIE](https://lumalabs.ai/genie).
-
+- The store icon is from [here](https://hero.fandom.com/wiki/Ms._Pac-Man?file=Pac-GirlPNR.png).
