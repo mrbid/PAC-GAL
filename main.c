@@ -316,10 +316,8 @@ uint move(uint d)
     if(living_stars == 0)
     {
         level++;
-        if(level == 10)
-            resetGame(0);
-        else
-            resetGame(1);
+        if(level == 10){resetGame(0);}
+        else           {resetGame(1);}
         goto badending;
     }
 
