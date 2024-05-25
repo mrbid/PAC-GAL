@@ -35,5 +35,5 @@ modules:
       - install -Dm 0644 flat/pacgal.png ${FLATPAK_DEST}/share/icons/hicolor/128x128/apps/pacgal.png
     sources:
       - type: git
-        url: https://github.com/mrbid/pacgal.git
+        url: https://github.com/mrbid/PAC-GAL.git
         commit: 000
