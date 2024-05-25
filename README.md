@@ -4,8 +4,8 @@
 
 **Turn-based PAC-MAN.**
 
-- Flathub: https://flathub.org/apps/com.voxdsp.PacGal
-- Snapcraft: https://snapcraft.io/pacgal
+- **Flathub:** https://flathub.org/apps/com.voxdsp.PacGal
+- **Snapcraft:** https://snapcraft.io/pacgal
 
 # build
 ```
