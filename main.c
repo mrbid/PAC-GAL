@@ -603,7 +603,6 @@ void main_loop()
             mSetPos(&model, (vec){sp[i].x, sp[i].y, sp[i].z+(td*2.f)});
             mRotZ(&model, td*9.f);
             const float ns = 1.f-(td*td*0.4f);
-            //mScale(&model, ns, ns, 1.f);
             mScale1(&model, ns);
             if(ns <= 0.f){sa[i]=2;}
             updateModelView();
