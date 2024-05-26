@@ -48,6 +48,7 @@ mat projection, view, model, modelview;
 uint ks[4]={0};
 uint ts;
 uint level = 0;
+float rwait = 0.f;
 
 vec pp, tp;
 uint pd;
@@ -82,6 +83,7 @@ void addStar(float x, float y)
 void resetGame(uint mode)
 {
     if(mode == 0){level = 0;}
+    rwait = t+1.f;
     pp = (vec){-4.f, 0.5f, 0.f};
     tp = pp;
     pd = 0;
@@ -316,8 +318,10 @@ uint move(uint d)
     if(living_stars == 0)
     {
         level++;
-        if(level == 10){resetGame(0);}
-        else           {resetGame(1);}
+        if(level == 10)
+            resetGame(0);
+        else
+            resetGame(1);
         goto badending;
     }
 
@@ -327,25 +331,11 @@ uint move(uint d)
     else if(ba[2] == 1 && pp.x ==  4.f && pp.y == -8.5f){ba[2]=2;bt[2]=t;pb=t+6.f;}
     else if(ba[3] == 1 && pp.x == -4.f && pp.y == -8.5f){ba[3]=2;bt[3]=t;pb=t+6.f;}
 
-    // simulate ghosts
+    // ghost colliding? (cheaper to put it in player move since in sync)
     for(uint i=0; i < MAX_GHOSTS; i++)
     {
         if(ga[i] == 1) // is alive
         {
-            if(fabsf(pp.x-gp[i].x) < 1.01f && fabsf(pp.y-gp[i].y) < 1.01f)
-            {
-                if(pb > t)
-                {
-                    ga[i] = 2;
-                    gt[i] = t;
-                }
-                else
-                {
-                    resetGame(0);
-                    goto badending;
-                }
-            }
-
             vec fgp = gp[i];
             if(randf() < 0.3f){gd[i] = fRand(0, 3);}
             if(gd[i] == 0){fgp.y += 1;}
@@ -412,7 +402,7 @@ void main_loop()
 //*************************************
 
     // inputs
-    for(uint i=0; i < 4; i++){if(ks[i] == 1){move(i);}}
+    if(t > rwait){for(uint i=0; i < 4; i++){if(ks[i] == 1){move(i);}}}
 
     // simulate gal
     if(ts == 1)
@@ -442,39 +432,6 @@ void main_loop()
             {
                 pp.x -= MOVE_SPEED*dt;
                 if(pp.x <= tp.x){pp.x=tp.x; ts=0;}
-            }
-        }
-    }
-
-    // simulate ghosts
-    for(uint i=0; i < MAX_GHOSTS; i++)
-    {
-        if(ga[i] == 0){continue;}
-        if(gp[i].y != tgp[i].y)
-        {
-            if(gd[i] == 0)
-            {
-                gp[i].y += MOVE_SPEED*dt;
-                if(gp[i].y >= tgp[i].y){gp[i].y=tgp[i].y;}
-            }
-            else if(gd[i] == 2)
-            {
-                gp[i].y -= MOVE_SPEED*dt;
-                if(gp[i].y <= tgp[i].y){gp[i].y=tgp[i].y;}
-            }
-        }
-
-        if(gp[i].x != tgp[i].x)
-        {
-            if(gd[i] == 1)
-            {
-                gp[i].x += MOVE_SPEED*dt;
-                if(gp[i].x >= tgp[i].x){gp[i].x=tgp[i].x;}
-            }
-            else if(gd[i] == 3)
-            {
-                gp[i].x -= MOVE_SPEED*dt;
-                if(gp[i].x <= tgp[i].x){gp[i].x=tgp[i].x;}
             }
         }
     }
@@ -533,8 +490,44 @@ void main_loop()
     esBindModel(2);
     for(uint i = 0; i < MAX_GHOSTS; i++)
     {
+        if(ga[i] == 0){continue;}
         if(ga[i] == 1)
         {
+            if(fabsf(pp.x-gp[i].x) < 0.5f && fabsf(pp.y-gp[i].y) < 0.5f)
+            {
+                if(pb > t)
+                {
+                    ga[i] = 2;
+                    gt[i] = t;
+                }
+                else{resetGame(0);}
+            }
+            if(gp[i].y != tgp[i].y)
+            {
+                if(gd[i] == 0)
+                {
+                    gp[i].y += MOVE_SPEED*dt;
+                    if(gp[i].y >= tgp[i].y){gp[i].y=tgp[i].y;}
+                }
+                else if(gd[i] == 2)
+                {
+                    gp[i].y -= MOVE_SPEED*dt;
+                    if(gp[i].y <= tgp[i].y){gp[i].y=tgp[i].y;}
+                }
+            }
+            if(gp[i].x != tgp[i].x)
+            {
+                if(gd[i] == 1)
+                {
+                    gp[i].x += MOVE_SPEED*dt;
+                    if(gp[i].x >= tgp[i].x){gp[i].x=tgp[i].x;}
+                }
+                else if(gd[i] == 3)
+                {
+                    gp[i].x -= MOVE_SPEED*dt;
+                    if(gp[i].x <= tgp[i].x){gp[i].x=tgp[i].x;}
+                }
+            }
             mIdent(&model);
             mSetPos(&model, gp[i]);
             if(gd[i] == 1)     {mRotZ(&model, 90.f*DEG2RAD); }
@@ -610,6 +603,7 @@ void main_loop()
             mSetPos(&model, (vec){sp[i].x, sp[i].y, sp[i].z+(td*2.f)});
             mRotZ(&model, td*9.f);
             const float ns = 1.f-(td*td*0.4f);
+            //mScale(&model, ns, ns, 1.f);
             mScale1(&model, ns);
             if(ns <= 0.f){sa[i]=2;}
             updateModelView();
@@ -748,10 +742,10 @@ void key_callback(GLFWwindow* window, int key, int scancode, int action, int mod
                 fc = 0;
             }
         }
-        // else if(key == GLFW_KEY_R) // reset game
-        // {
-        //     resetGame(0);
-        // }
+        else if(key == GLFW_KEY_R) // reset game
+        {
+            resetGame(0);
+        }
     }
     else if(action == GLFW_RELEASE)
     {
@@ -785,7 +779,7 @@ int main(int argc, char** argv)
     printf("James William Fletcher (github.com/mrbid)\n");
     printf("%s - You say it best when you say nothing at all.\n", appTitle);
     printf("----\n");
-    printf("A feminized PAC-MAN remake.\n");
+    printf("A feminized PAC-MAN clone.\n");
     printf("----\n");
     printf("One command line argument, msaa 0-16.\n");
     printf("e.g; ./pacgal 16\n");
