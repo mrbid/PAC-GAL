@@ -20,11 +20,11 @@ modules:
       - -DGLFW_BUILD_EXAMPLES=OFF
       - -DGLFW_BUILD_TESTS=OFF
       - -DGLFW_BUILD_DOCS=OFF
-      - -DGLFW_USE_WAYLAND=1
+      - -DGLFW_BUILD_WAYLAND=1
     sources:
       - type: git
         url: https://github.com/glfw/glfw.git
-        commit: 3eaf1255b29fdf5c2895856c7be7d7185ef2b241
+        commit: b35641f4a3c62aa86a0b3c983d163bc0fe36026d
   - name: pacgal
     buildsystem: simple
     build-commands:
