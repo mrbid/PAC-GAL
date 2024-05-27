@@ -12,6 +12,7 @@
 #define uint GLuint
 #define sint GLint
 
+#define GLAD_GL_IMPLEMENTATION
 #include "inc/gl.h"
 #define GLFW_INCLUDE_NONE
 #include "inc/glfw3.h"

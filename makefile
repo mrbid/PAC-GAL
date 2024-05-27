@@ -1,10 +1,10 @@
 all:
-	cc main.c glad_gl.c -I inc -Ofast -lglfw -lm -o release/PacGal_linux
+	cc main.c -I inc -Ofast -lglfw -lm -o release/PacGal_linux
 	strip --strip-unneeded release/PacGal_linux
 	upx --lzma --best release/PacGal_linux
 
 win:
-	i686-w64-mingw32-gcc main.c glad_gl.c -Ofast -I inc -L. -lglfw3dll -lm -o release/PacGal_windows.exe
+	i686-w64-mingw32-gcc main.c -Ofast -I inc -L. -lglfw3dll -lm -o release/PacGal_windows.exe
 	strip --strip-unneeded release/PacGal_windows.exe
 	upx --lzma --best release/PacGal_windows.exe
 
@@ -14,4 +14,5 @@ test:
 	rm /tmp/PacGal_test
 
 clean:
-	rm -f release/PacGal
+	rm -f release/PacGal_linux
+	rm -f release/PacGal_windows.exe
