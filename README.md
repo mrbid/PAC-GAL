@@ -6,6 +6,7 @@
 
 - **Flathub:** https://flathub.org/apps/com.voxdsp.PacGal
 - **Snapcraft:** https://snapcraft.io/pacgal
+- **Windows:** [PacGal_windows.zip](https://github.com/mrbid/PAC-GAL/releases/download/1.0/PacGal_windows.zip)
 
 # build
 ```
