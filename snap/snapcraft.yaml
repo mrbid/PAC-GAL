@@ -1,5 +1,5 @@
 name: pacgal
-base: core22
+base: core24
 version: '1.0'
 license: GPL-2.0-only
 summary: Feminized PAC-MAN remake
