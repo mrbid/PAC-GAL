@@ -42,7 +42,7 @@ float t=0.f, dt=0.f, lt=0.f, fc=0.f, lfct=0.f, aspect;
 mat projection, view, model, modelview;
 
 // game vars
-#define FAR_DISTANCE 333.f
+#define FAR_DISTANCE 36.f
 #define MOVE_SPEED 6.f
 #define TOTAL_STARS 95
 #define MAX_GHOSTS 4
