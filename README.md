@@ -4,7 +4,7 @@
 
 **Turn-based PAC-MAN.**
 
-- **Play Online:** https://pushergames.itch.io/pac-gal
+- **Play Online:** https://pushergames.itch.io/pacgal
 - **Flathub:** https://flathub.org/apps/com.voxdsp.PacGal
 - **Snapcraft:** https://snapcraft.io/pacgal
 - **Windows:** [PacGal_windows.zip](https://github.com/mrbid/PAC-GAL/releases/download/1.0/PacGal_windows.zip)
