@@ -9,7 +9,7 @@ win:
 	upx --lzma --best release/PacGal_windows.exe
 
 test:
-	tcc main.c glad_gl.c -I inc -Ofast -lglfw -lm -o /tmp/PacGal_test
+	tcc main.c -I inc -Ofast -lglfw -lm -o /tmp/PacGal_test
 	/tmp/PacGal_test
 	rm /tmp/PacGal_test
 
