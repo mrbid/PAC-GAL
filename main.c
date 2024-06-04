@@ -21,6 +21,7 @@
 //#define GL_DEBUG
 #define MAX_MODELS 5 // hard limit, be aware and increase if needed
 #include "inc/esAux7.h"
+#include "inc/mat.h"
 
 #include "inc/res.h"
 #include "assets/high/level.h"  //0
