@@ -9,16 +9,12 @@
     Lambertian fragment shaders make a difference, but only if you normalise the
     vertNorm in the fragment shader. Most of the time you won't notice the difference.
 
-    This focuses on using ML generated models from LUMA GENIE or MESHY.AI
+    This focuses on using ML generated models from LUMA GENIE, MESHY.AI, or TRIPO3D.AI
     converted to vertex colors and shaded via shadeLambert().
     
     No Textures, No Phong, One view-space light with position, ambient and saturation control.
 
     Default: ambient = 0.648, saturate = 0.26 or 1.0
-
-    Requires:
-        - vec.h: https://gist.github.com/mrbid/77a92019e1ab8b86109bf103166bd04e
-        - mat.h: https://gist.github.com/mrbid/cbc69ec9d99b0fda44204975fcbeae7c
     
     https://registry.khronos.org/OpenGL-Refpages/es1.1/xhtml/
     https://registry.khronos.org/OpenGL/specs/es/2.0/GLSL_ES_Specification_1.00.pdf
@@ -31,9 +27,6 @@
 //#define MAX_MODELS 32 // uncomment to enable the use of esBindModel(id) and esRenderModel() or just esBindRender(id)
 //#define GL_DEBUG // allows you to use esDebug(1); to enable OpenGL errors to the console.
                     // https://gen.glad.sh/ and https://glad.dav1d.de/ might help
-
-#include "vec.h"
-#include "mat.h"
 
 // render state id's ~ ( just so you don't need to define them when using shadeLambert() or similar ) ~
 GLint projection_id;
@@ -55,7 +48,7 @@ typedef struct
     GLuint cid;	// Colour Array Buffer ID
     GLuint nid;	// Normal Array Buffer ID
 #ifdef MAX_MODELS
-    GLuint itp; // Index Type (0:ubyte, 1:ushort, 2:uint)
+    GLuint itp; // Index Type (GL_UNSIGNED_BYTE, GL_UNSIGNED_SHORT, GL_UNSIGNED_INT)
     GLuint ni;  // Number of Indices
 #endif
 } ESModel;
@@ -219,6 +212,7 @@ void esDebug(const GLuint state)
 	esModelArray_index++;
 #endif // I like this system. It's amost frictionless and you can index what you like off it. 
 // but you need the new ptf2.c program: https://gist.github.com/mrbid/35b1d359bddd9304c1961c1bf0fcb882
+// or the newer PTF and PTO programs: https://github.com/mrbid/esAux7
 
 //*************************************
 // SHADER CODE
